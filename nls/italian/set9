@@ -8,5 +8,5 @@ $set 9
 5 Alcuni tasti estesi sono troppo grandi per il buffer interno di stampa
 6 Enumerate: BACO!! ho ricevuto un puntatore nullo\n!
 7 niente in ingresso
-8 Qualcosa deve seguire: %c\n
+8 Qualcosa deve seguire: '%c'\n
 9 Costante ottale non adeguata per un char.\n

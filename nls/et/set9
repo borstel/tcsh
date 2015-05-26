@@ -8,5 +8,5 @@ $set 9
 5 Mõned laiendatud klahvid on sisemise trükipuhvri jaoks liiga pikad
 6 Enumerate: BUG!! Null viit anti\n!
 7 sisendit pole
-8 Midagi peab järgnema: %c\n
+8 Midagi peab järgnema: '%c'\n
 9 kaheksand-konstant ei mahu sümbolisse.\n

@@ -8,5 +8,5 @@ $set 9
 5 Algunas teclas extendidas son demasiado grandes para el buffer de impresión interno
 6 Enumerate: ¡¡BUG!! Se ha pasado un puntero nulo!\n
 7 no hay entrada
-8 Falta algo a continuación: %c\n
+8 Falta algo a continuación: '%c'\n
 9 Una constante octal no cabe en un carácter.\n

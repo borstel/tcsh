@@ -347,7 +347,7 @@ machtype: defined(mc68020)				: "m68k"
 machtype: defined(sparcv9)				: "sparcv9"
 machtype: defined(sparc)				: "sparc"
 machtype: defined(M_i386)				: "i386"
-machtype: defined(M_amd64)				: "x86_64"
+machtype: defined(M_amd64)				: "amd64"
 enddef	:
 
 

@@ -348,10 +348,13 @@ calloc(size_t i, size_t j)
 {
 #ifndef lint
     char *cp;
+    size_t k;
 
     i *= j;
     cp = xmalloc(i);
-    memset(cp, 0, i);
+    /* Stop gcc 5.x from optimizing malloc+memset = calloc */
+    k = i;
+    memset(cp, 0, k);
 
     return ((memalign_t) cp);
 #else

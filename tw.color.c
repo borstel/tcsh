@@ -241,14 +241,11 @@ init(size_t colorlen, size_t extnum)
 static int
 color(Char x)
 {
-    int c;
     static const char ccolors[] = "abcdefghx";
     char *p;
     if (Isupper(x)) {
 	x = Tolower(x);
-	c |= TCSH_BOLD;
-    } else
-	c = 0;
+    }
 
     if (x == '\0' || (p = strchr(ccolors, x)) == NULL)
 	return -1;

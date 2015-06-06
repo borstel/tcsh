@@ -743,7 +743,7 @@ unparsestring(const CStr *str, const Char *sep)
 	    *b++ = (unsigned char) p;
 	}
 	else if (p == ' ' || (Isprint(p) && !Isspace(p)))
-	    b += one_wctomb((char *)b, p & CHAR);
+	    b += one_wctomb((char *)b, p);
 	else {
 	    *b++ = '\\';
 	    *b++ = ((p >> 6) & 7) + '0';

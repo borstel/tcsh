@@ -1199,7 +1199,7 @@ fmthist(int fmt, ptr_t ptr)
 	    buf = xmalloc(Strlen(istr) * MB_LEN_MAX + 1);
 
 	    for (p = buf, ip = istr; *ip != '\0'; ip++)
-		p += one_wctomb(p, CHAR & *ip);
+		p += one_wctomb(p, *ip);
 
 	    *p = '\0';
 	    xfree(istr);

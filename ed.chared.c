@@ -3387,7 +3387,7 @@ e_stuff_char(Char c)
          (void) Cookedmode();
 
      (void) xwrite(SHIN, "\n", 1);
-     len = one_wctomb(buf, c & CHAR);
+     len = one_wctomb(buf, c);
      for (i = 0; i < len; i++)
 	 (void) ioctl(SHIN, TIOCSTI, (ioctl_t) &buf[i]);
 

@@ -618,7 +618,12 @@ insert_meta(const Char *cp, const Char *cpend, const Char *word,
 	    break;
 
 	wq = w & QUOTE;
-	w &= ~QUOTE;
+#if INVALID_BYTE != 0
+	/* add checking INVALID_BYTE for FIX UTF32 */
+	if ((w & INVALID_BYTE) != INVALID_BYTE)		/* w < INVALID_BYTE */
+#else
+	    w &= ~QUOTE;
+#endif
 
 	if (cmap(w, _ESC | _QF))
 	    wq = QUOTE;		/* quotes are always quoted */

@@ -594,8 +594,13 @@ trim(Char **t)
     Char *p;
 
     while ((p = *t++) != '\0')
-	while (*p)
-	    *p++ &= TRIM;
+	while (*p) {
+#if INVALID_BYTE != 0
+	    if ((*p & INVALID_BYTE) != INVALID_BYTE)	/* *p < INVALID_BYTE */
+#endif
+		*p &= TRIM;
+	    p++;
+	}
 }
 
 int

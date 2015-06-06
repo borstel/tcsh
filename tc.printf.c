@@ -289,7 +289,7 @@ doprnt(void (*addchar) (int), const char *sfmt, va_list ap)
 			(*addchar) ('\\' | attributes);
 			count++;
 		    }
-		    len = one_wctomb(cbuf, *Bp & CHAR);
+		    len = one_wctomb(cbuf, *Bp);
 		    for (pos = 0; pos < len; pos++) {
 			(*addchar) ((unsigned char)cbuf[pos] | attributes
 				    | (*Bp & ATTRIBUTES));

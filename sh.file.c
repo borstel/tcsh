@@ -249,7 +249,7 @@ pushback(const Char *string)
 	char buf[MB_LEN_MAX];
 	size_t i, len;
 
-	len = one_wctomb(buf, *p & CHAR);
+	len = one_wctomb(buf, *p);
 	for (i = 0; i < len; i++)
 	    (void) ioctl(SHOUT, TIOCSTI, (ioctl_t) &buf[i]);
     }

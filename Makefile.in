@@ -415,8 +415,8 @@ AVSRCS= Fixes MAKEDIFFS MAKESHAR NewThings README FAQ \
 	tests/testsuite.at aclocal.m4
 TESTFILES= tests/aliases.at tests/arguments.at tests/commands.at \
 	tests/expr.at tests/lexical.at tests/mb-eucjp.at \
-	tests/mb-utf8.at tests/noexec.at tests/syntax.at tests/subst.at \
-	tests/variables.at tests/sh.dol.at
+	tests/mb-utf8.at tests/noexec.at tests/parenthesis.at tests/syntax.at \
+	tests/subst.at tests/variables.at tests/sh.dol.at
 
 VHSRCS=${PVSRCS} ${AVSRCS}
 

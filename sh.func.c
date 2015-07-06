@@ -1045,6 +1045,17 @@ getword(struct Strbuf *wp)
 		goto past;
 	    if (wp)
 		Strbuf_append1(wp, (Char) c);
+	    if (!d && c == ')') {
+		if (!first && wp) {
+		    goto past_word_end;
+		} else {
+		    if (wp) {
+			wp->len = 1;
+			Strbuf_terminate(wp);
+		    }
+		    return found;
+		}
+	    }
 	    if (!first && !d && c == '(') {
 		if (wp)
 		    goto past_word_end;

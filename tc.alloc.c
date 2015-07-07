@@ -348,7 +348,7 @@ calloc(size_t i, size_t j)
 {
 #ifndef lint
     char *cp;
-    size_t k;
+    volatile size_t k;
 
     i *= j;
     cp = xmalloc(i);

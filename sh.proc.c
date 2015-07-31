@@ -1003,7 +1003,7 @@ pprint(struct process *pp, int flag)
     tp = pp;
     status = reason = -1;
     jobflags = 0;
-    haderr = 1;	/* Print statuc to stderr */
+    haderr = 1;	/* Print status to stderr */
     do {
 #ifdef BACKPIPE
 	/*

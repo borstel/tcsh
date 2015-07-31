@@ -513,9 +513,9 @@ struct process *
 find_stop_ed(void)
 {
     struct process *pp, *retp;
-    const char *ep, *vp;
+    const char *ep = NULL, *vp = NULL;
     char *cp, *p;
-    size_t epl, vpl;
+    size_t epl = 0, vpl = 0;
     int pstatus;
     struct varent *varp;
     Char **vv;
@@ -523,29 +523,31 @@ find_stop_ed(void)
     if (pcurrent == NULL)	/* see if we have any jobs */
 	return NULL;		/* nope */
 
-    if ((ep = getenv("EDITOR")) != NULL) {	/* if we have a value */
-	if ((p = strrchr(ep, '/')) != NULL) 	/* if it has a path */
-	    ep = p + 1;		/* then we want only the last part */
-    }
-    else 
-	ep = "ed";
-
-    if ((vp = getenv("VISUAL")) != NULL) {	/* if we have a value */
-	if ((p = strrchr(vp, '/')) != NULL) 	/* and it has a path */
-	    vp = p + 1;		/* then we want only the last part */
-    }
-    else 
-	vp = "vi";
-
-    for (vpl = 0; vp[vpl] && !isspace((unsigned char)vp[vpl]); vpl++)
-	continue;
-    for (epl = 0; ep[epl] && !isspace((unsigned char)ep[epl]); epl++)
-	continue;
-
     if ((varp = adrof(STReditors)) != NULL)
 	vv = varp->vec;
     else
 	vv = NULL;
+
+    if (! vv) {
+	if ((ep = getenv("EDITOR")) != NULL) {	/* if we have a value */
+	    if ((p = strrchr(ep, '/')) != NULL) 	/* if it has a path */
+		ep = p + 1;		/* then we want only the last part */
+	}
+	else
+	    ep = "ed";
+
+	if ((vp = getenv("VISUAL")) != NULL) {	/* if we have a value */
+	    if ((p = strrchr(vp, '/')) != NULL) 	/* and it has a path */
+		vp = p + 1;		/* then we want only the last part */
+	}
+	else
+	    vp = "vi";
+
+	for (vpl = 0; vp[vpl] && !isspace((unsigned char)vp[vpl]); vpl++)
+	    continue;
+	for (epl = 0; ep[epl] && !isspace((unsigned char)ep[epl]); epl++)
+	    continue;
+    }
 
     retp = NULL;
     for (pp = proclist.p_next; pp; pp = pp->p_next)
@@ -573,13 +575,12 @@ find_stop_ed(void)
 		cp = p;			/* else we get all of it */
 
 	    /*
-	     * If we find the current name as $EDITOR or $VISUAL,
-	     * or in $editors array, fg it
+	     * If we find the current name in the $editors array (if set)
+	     * or as $EDITOR or $VISUAL (if $editors not set), fg it.
 	     */
-	    if ((strncmp(ep, cp, epl) == 0 && cp[epl] == '\0') ||
-		(strncmp(vp, cp, vpl) == 0 && cp[vpl] == '\0') ||
-		findvv(vv, cp)) {
-
+	    if ((vv && findvv(vv, cp)) ||
+	        (epl && strncmp(ep, cp, epl) == 0 && cp[epl] == '\0') ||
+		(vpl && strncmp(vp, cp, vpl) == 0 && cp[vpl] == '\0')) {
 		/*
 		 * If there is a choice, then choose the current process if
 		 * available, or the previous process otherwise, or else

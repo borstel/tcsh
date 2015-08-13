@@ -167,6 +167,7 @@ update_vars(Char *vp)
     }
     else if (eq(vp, STRvimode)) {
 	VImode = 1;
+	update_wordchars();
     }
     else if (eq(vp, STRshlvl)) {
 	tsetenv(STRKSHLVL, varval(vp));
@@ -808,6 +809,7 @@ unset(Char **v, struct command *c)
 #if defined(KANJI) && defined(SHORT_STRINGS) && defined(DSPMBYTE)
     update_dspmbyte_vars();
 #endif
+    update_wordchars();
 #ifdef NLS_CATALOGS
     nlsclose();
     nlsinit();
@@ -1316,3 +1318,11 @@ autoset_kanji(void)
 }
 #endif
 #endif
+
+void
+update_wordchars(void)
+{
+    if ((word_chars == STR_WORD_CHARS) || (word_chars == STR_WORD_CHARS_VI)) {
+	word_chars = (VImode ? STR_WORD_CHARS_VI : STR_WORD_CHARS);
+    }
+}

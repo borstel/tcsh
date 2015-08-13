@@ -345,6 +345,7 @@ main(int argc, char **argv)
 # endif
 #endif
     STR_WORD_CHARS = SAVE(WORD_CHARS);
+    STR_WORD_CHARS_VI = SAVE(WORD_CHARS_VI);
 
     HIST = '!';
     HISTSUB = '^';

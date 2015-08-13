@@ -399,6 +399,7 @@ extern	void		  autoset_dspmbyte	(const Char *);
 #if defined(AUTOSET_KANJI)
 extern	void		  autoset_kanji	(void);
 #endif
+extern	void		  update_wordchars	(void);
 
 /*
  * sh.time.c

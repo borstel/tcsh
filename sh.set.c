@@ -165,6 +165,9 @@ update_vars(Char *vp)
 	noediting = 0;
 	/* PWP: add more stuff in here later */
     }
+    else if (eq(vp, STRvimode)) {
+	VImode = 1;
+    }
     else if (eq(vp, STRshlvl)) {
 	tsetenv(STRKSHLVL, varval(vp));
     }
@@ -792,6 +795,8 @@ unset(Char **v, struct command *c)
 	SetKillRing(0);
     if (did_edit && noediting && adrof(STRedit) == 0)
 	noediting = 0;
+    if (adrof(STRvimode) == 0)
+	VImode = 0;
     if (did_roe && adrof(STRrecognize_only_executables) == 0)
 	tw_cmd_free();
     if (adrof(STRhistory) == 0)

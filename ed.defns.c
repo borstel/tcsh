@@ -1889,6 +1889,7 @@ ed_InitVIMaps(void)
     int i;
 
     VImode = 1;
+    setNS(STRvimode);
     ResetXmap();
     for (i = 0; i < NT_NUM_KEYS; i++) {
 	CcKeyMap[i] = CcViMap[i];
@@ -1910,6 +1911,9 @@ ed_InitEmacsMaps(void)
     cstr.len = 2;
 
     VImode = 0;
+    if (adrof(STRvimode))
+	unsetv(STRvimode);
+
     ResetXmap();
     for (i = 0; i < NT_NUM_KEYS; i++) {
 	CcKeyMap[i] = CcEmacsMap[i];

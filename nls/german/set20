@@ -19,7 +19,7 @@ $set 20
 16     -c   belege einen Unix-Befehl anstelle eines Befehls\n
 17     -v   initialisiere Belegungen mit Standard-Vi-Belegungen\n
 18     -e   initialisiere Belegungen mit Standard-Emacs-Belegungen\n
-19     -d   initialisiere Belegungen mit Standard-Belegungen\n
+19     -d   initialisiere Belegungen mit Standard-Belegungen (%s)\n
 20     -l   zeige verfügbare Funktionen mit Beschreibungen an\n
 21     -r   entferne Belegung eines Tastes\n
 22     -k   belege Pfeiltaste mit Namen in In-String\n

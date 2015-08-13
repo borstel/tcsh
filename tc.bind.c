@@ -506,8 +506,14 @@ bindkey_usage(void)
 	    "    -v   bind all keys to vi bindings\n"));
     xprintf("%s", CGETS(20, 18,
 	    "    -e   bind all keys to emacs bindings\n"));
-    xprintf("%s", CGETS(20, 19,
-	    "    -d   bind all keys to default editor's bindings\n"));
+    xprintf(CGETS(20, 19,
+	    "    -d   bind all keys to default editor's bindings (%s)\n"),
+#ifdef VIDEFAULT
+	    "vi"
+#else /* EMACSDEFAULT */
+	    "emacs"
+#endif /* VIDEFAULT */
+	    );
     xprintf("%s", CGETS(20, 20,
 	    "    -l   list editor commands with descriptions\n"));
     xprintf("%s", CGETS(20, 21,

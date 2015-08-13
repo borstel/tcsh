@@ -19,7 +19,7 @@ $set 20
 16     -c   interpreta COMANDO come un comando interno o esterno\n
 17     -v   definisce tutti i tasti alla 'vi'\n
 18     -e   definisce tutti i tasti alla 'emacs'\n
-19     -d   definisce tutti i tasti in base all'editor di default\n
+19     -d   definisce tutti i tasti in base all'editor di default (%s)\n
 20     -l   elenca i comandi di modifica testo con relativa descrizione\n
 21     -r   rimuove la definizione per TASTO\n
 22     -k   interpreta TASTO come un nome simbolico di tasto freccia\n

@@ -290,7 +290,7 @@ c_preword(Char *p, Char *low, int n, Char *delim)
 /*
  * c_to_class() returns the class of the given character.
  *
- * This is used to make the c_prev_word() and c_next_word() functions
+ * This is used to make the c_prev_word(), c_next_word() and c_eword() functions
  * work like vi's, which classify characters. A word is a sequence of
  * characters belonging to the same class, classes being defined as
  * follows:
@@ -828,15 +828,24 @@ c_eword(Char *p, Char *high, int n)
     p++;
 
     while (n--) {
-	while ((p < high) && Isspace(*p)) 
-	    p++;
+        int  c_class;
 
-	if (isword(*p))
-	    while ((p < high) && isword(*p)) 
-		p++;
-	else
-	    while ((p < high) && !(Isspace(*p) || isword(*p)))
-		p++;
+        if (p >= high)
+            break;
+
+        /* scan until end of current word (may be all whitespace!) */
+        c_class = c_to_class(*p);
+        while ((p < high) && c_class == c_to_class(*p))
+            p++;
+
+        /* if this was a non_whitespace word, we're ready */
+        if (c_class != C_CLASS_WHITE)
+            continue;
+
+        /* otherwise, move to the end of the word just found */
+        c_class = c_to_class(*p);
+        while ((p < high) && c_class == c_to_class(*p))
+            p++;
     }
 
     p--;

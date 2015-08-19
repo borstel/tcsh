@@ -142,7 +142,7 @@ extern	CCRETVAL	e_wordfwd		(Char);
 extern	CCRETVAL	v_wordbegnext		(Char);
 extern	CCRETVAL	e_uppercase		(Char);
 extern	CCRETVAL	e_lowercase		(Char);
-extern	CCRETVAL	e_capitolcase		(Char);
+extern	CCRETVAL	e_capitalcase		(Char);
 extern	CCRETVAL	e_cleardisp		(Char);
 extern	CCRETVAL	e_complete		(Char);
 extern	CCRETVAL	e_correct		(Char);

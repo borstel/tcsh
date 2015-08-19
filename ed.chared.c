@@ -3034,7 +3034,7 @@ e_uppercase(Char c)
 
 /*ARGSUSED*/
 CCRETVAL
-e_capitolcase(Char c)
+e_capitalcase(Char c)
 {
     Char   *cp, *end;
 

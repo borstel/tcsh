@@ -47,7 +47,7 @@ RCSID("$tcsh$")
 # define HZ 16
 #endif /* aiws */
 
-#if defined(_BSD) || (defined(IRIS4D) && __STDC__) || defined(__lucid) || defined(__linux__) || defined(__GNU__) || defined(__GLIBC__)
+#if defined(_BSD) || (defined(IRIS4D) && __STDC__) || defined(__lucid) || defined(__GLIBC__)
 # if !defined(__ANDROID__)
 #  define BSDWAIT
 # endif

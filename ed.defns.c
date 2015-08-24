@@ -151,7 +151,7 @@ PFCmd   CcFuncTbl[] = {		/* table of available commands */
 #define         F_CASEUPPER     54
     e_lowercase,
 #define         F_CASELOWER     55
-    e_capitolcase,
+    e_capitalcase,
 #define         F_CASECAPITAL   56
     v_zero,
 #define		V_ZERO		57

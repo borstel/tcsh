@@ -1332,7 +1332,6 @@ tw_fixword(int looking, struct Strbuf *word, Char *dir, Char *exp_name)
 	break;
     }
 
-    (void) quote(exp_name);
     Strbuf_append(word, exp_name);		/* add extended name */
     Strbuf_terminate(word);
 } /* end tw_fixword */

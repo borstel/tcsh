@@ -193,6 +193,11 @@ static __inline void tcsh_ignore(intptr_t a)
 # endif /* SYSVREL */
 #endif /* ECHO_STYLE */
 
+/* values for noclobber */
+#define NOCLOBBER_DEFAULT  1
+#define NOCLOBBER_NOTEMPTY 2
+#define NOCLOBBER_ASK      4
+
 /*
  * The shell moves std in/out/diag and the old std input away from units
  * 0, 1, and 2 so that it is easy to set up these standards for invoked
@@ -577,6 +582,7 @@ EXTERN int    arun IZERO;	/* Currently running multi-line-aliases */
 EXTERN int    implicit_cd IZERO;/* implicit cd enabled?(1=enabled,2=verbose) */
 EXTERN int    cdtohome IZERO;	/* cd without args goes home */
 EXTERN int    inheredoc IZERO;	/* Currently parsing a heredoc */
+EXTERN int    no_clobber IZERO;	/* no clobber enabled? 1=yes 2=notempty, 4=ask*/
 /* We received a window change event */
 EXTERN volatile sig_atomic_t windowchg IZERO;
 #if defined(KANJI) && defined(SHORT_STRINGS) && defined(DSPMBYTE)

@@ -1145,7 +1145,6 @@ rmstar(struct wordent *cp)
     Char   *tag;
 #endif /* RMDEBUG */
     Char   *charac;
-    char    c;
     int     ask, doit, star = 0, silent = 0, opintr_disabled;
 
     if (!adrof(STRrmstar))
@@ -1178,17 +1177,8 @@ rmstar(struct wordent *cp)
 		    if (!Strcmp(args->word, STRstar))
 			star = 1;
 		if (ask && star) {
-		    xprintf("%s", CGETS(22, 8,
-			    "Do you really want to delete all files? [n/y] "));
-		    flush();
-		    (void) force_read(SHIN, &c, 1);
-		    /* 
-		     * Perhaps we should use the yesexpr from the
-		     * actual locale
-		     */
-		    doit = (strchr(CGETS(22, 14, "Yy"), c) != NULL);
-		    while (c != '\n' && force_read(SHIN, &c, 1) == 1)
-			continue;
+		    doit = getYN(CGETS(22, 8,
+			"Do you really want to delete all files? [N/y] "));
 		    if (!doit) {
 			/* remove the command instead */
 #ifdef RMDEBUG

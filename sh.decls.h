@@ -185,6 +185,7 @@ extern	void		  unalias	(Char **, struct command *);
 extern	void		  wfree		(void);
 extern	void		  dobuiltins	(Char **, struct command *);
 extern	void		  reexecute	(struct command *);
+extern  int		  getYN		(const char *);
 
 /*
  * sh.glob.c

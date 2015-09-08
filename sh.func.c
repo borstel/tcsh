@@ -2722,3 +2722,20 @@ nlsclose(void)
     }
 #endif /* NLS_CATALOGS */
 }
+
+int
+getYN(const char *prompt)
+{
+    int doit, c;
+    xprintf("%s", prompt);
+    flush();
+    (void) force_read(SHIN, &c, 1);
+    /* 
+     * Perhaps we should use the yesexpr from the
+     * actual locale
+     */
+    doit = (strchr(CGETS(22, 14, "Yy"), c) != NULL);
+    while (c != '\n' && force_read(SHIN, &c, 1) == 1)
+	continue;
+    return doit;
+}

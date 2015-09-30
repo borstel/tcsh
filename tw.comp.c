@@ -251,7 +251,7 @@ static int
 tw_match(const Char *str, const Char *pat, int exact)
 {
     const Char *estr;
-    int rv = exact ? Gmatch(str, pat) : Gnmatch(str, pat, &estr);
+    int rv = exact ? Gmatch(estr = str, pat) : Gnmatch(str, pat, &estr);
 #ifdef TDEBUG
     xprintf("G%smatch(%s, ", exact ? "" : "n", short2str(str));
     xprintf("%s, ", short2str(pat));

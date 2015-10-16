@@ -621,9 +621,8 @@ insert_meta(const Char *cp, const Char *cpend, const Char *word,
 #if INVALID_BYTE != 0
 	/* add checking INVALID_BYTE for FIX UTF32 */
 	if ((w & INVALID_BYTE) != INVALID_BYTE)		/* w < INVALID_BYTE */
-#else
-	    w &= ~QUOTE;
 #endif
+	    w &= ~QUOTE;
 
 	if (cmap(w, _ESC | _QF))
 	    wq = QUOTE;		/* quotes are always quoted */
@@ -1332,6 +1331,7 @@ tw_fixword(int looking, struct Strbuf *word, Char *dir, Char *exp_name)
 	break;
     }
 
+    (void) quote(exp_name);
     Strbuf_append(word, exp_name);		/* add extended name */
     Strbuf_terminate(word);
 } /* end tw_fixword */

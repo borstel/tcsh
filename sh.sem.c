@@ -212,8 +212,14 @@ execute(struct command *t, volatile int wanttty, int *pipein, int *pipeout,
 	 * If noexec then this is all we do.
 	 */
 	if (t->t_dflg & F_READ) {
+	    int old_pintr_disabled;
+
 	    xclose(0);
+	    if (setintr)
+		pintr_push_enable(&old_pintr_disabled);
 	    heredoc(t->t_dlef);
+	    if (setintr)
+		cleanup_until(&old_pintr_disabled);
 	    if (noexec)
 		xclose(0);
 	}

@@ -24,7 +24,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 #include "sh.h"
-RCSID("$tcsh$");
+RCSID("$tcsh$")
 
 #include <stdio.h>
 #ifndef O_SYNC

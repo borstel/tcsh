@@ -260,6 +260,7 @@ copylex(struct wordent *hp, struct wordent *fp)
 void
 initlex(struct wordent *vp)
 {
+	vp->word = STRNULL;
 	vp->prev = vp;
 	vp->next = vp;
 }

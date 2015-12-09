@@ -955,8 +955,7 @@ evalav(Char **v)
     struct wordent *wdp = hp;
 
     setcopy(STRstatus, STR0, VAR_READWRITE);
-    hp->prev = hp->next = hp;
-    hp->word = STRNULL;
+    initlex(hp);
     while (*v) {
 	struct wordent *new = xcalloc(1, sizeof *wdp);
 
@@ -968,7 +967,6 @@ evalav(Char **v)
     }
     hp->prev = wdp;
     cleanup_push(&paraml1, lex_cleanup);
-    initlex(&paraml1);
     alias(&paraml1);
     t = syntax(paraml1.next, &paraml1, 0);
     cleanup_push(t, syntax_cleanup);

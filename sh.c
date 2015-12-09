@@ -274,6 +274,7 @@ main(int argc, char **argv)
 #endif
 
     nlsinit();
+    initlex(&paraml);
 
 #ifdef MALLOC_TRACE
     mal_setstatsfile(fdopen(dmove(xopen("/tmp/tcsh.trace", 
@@ -2049,6 +2050,7 @@ process(int catch)
 	 */
 	if (setintr)
 	    pintr_push_enable(&old_pintr_disabled);
+	freelex(&paraml);
 	hadhist = lex(&paraml);
 	if (setintr)
 	    cleanup_until(&old_pintr_disabled);

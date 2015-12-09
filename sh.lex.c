@@ -258,6 +258,13 @@ copylex(struct wordent *hp, struct wordent *fp)
 }
 
 void
+initlex(struct wordent *vp)
+{
+	vp->prev = vp;
+	vp->next = vp;
+}
+
+void
 freelex(struct wordent *vp)
 {
     struct wordent *fp;

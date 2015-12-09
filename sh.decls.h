@@ -239,6 +239,7 @@ extern	void		  btell		(struct Ain *);
 extern	void		  btoeof	(void);
 extern	void		  copylex	(struct wordent *, struct wordent *);
 extern	Char		 *domod		(Char *, Char);
+extern	void		  initlex	(struct wordent *);
 extern	void		  freelex	(struct wordent *);
 extern	int		  lex		(struct wordent *);
 extern	void		  lex_cleanup	(void *);

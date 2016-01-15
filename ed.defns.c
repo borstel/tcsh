@@ -1805,7 +1805,7 @@ CheckMaps(void)
 
     if ((sizeof(CcKeyMap)) != c1)
 	xprintf("CcKeyMap should be %d entries, but is %d.\r\n",
-		NT_NUM_KEYS, sizeof(CcKeyMap) / sizeof(KEYCMD)));
+		NT_NUM_KEYS, (sizeof(CcKeyMap) / sizeof(KEYCMD)));
 
     if ((sizeof(CcAltMap)) != c1)
 	xprintf("CcAltMap should be %d entries, but is %d.\r\n",

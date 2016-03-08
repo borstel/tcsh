@@ -134,7 +134,11 @@ union overhead {
 #endif
 
 
+#ifdef _LP64
+#define ROUNDUP	15
+#else
 #define ROUNDUP	7
+#endif
 
 /*
  * nextf[i] is the pointer to the next free block of size 2^(i+3).  The

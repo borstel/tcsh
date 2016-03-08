@@ -386,7 +386,7 @@ loop:
 			     */
 			    c |= QUOTE;
 			ungetC(c);
-			c = '\\';
+			c = '\\' | QUOTE;
 		    }
 		}
 	    }

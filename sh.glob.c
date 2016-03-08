@@ -878,7 +878,9 @@ backeval(struct blk_buf *bb, struct Strbuf *word, Char *cp, int literal)
 	    if (!quoted && (c == ' ' || c == '\t'))
 		break;
 	    cnt++;
-	    Strbuf_append1(word, c | quoted);
+	    if (c == '\\' || quoted)
+		c |= QUOTE;
+	    Strbuf_append1(word, c);
 	}
 	/*
 	 * Unless at end-of-file, we will form a new word here if there were

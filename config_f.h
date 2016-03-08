@@ -38,6 +38,10 @@
 #ifndef _h_config_f
 #define _h_config_f
 
+#ifdef HAVE_FEATURES_H
+#include <features.h>		/* for __GLIBC__ */
+#endif
+
 /*
  * SHORT_STRINGS Use at least 16 bit characters instead of 8 bit chars
  * 	         This fixes up quoting problems and eases implementation

@@ -676,6 +676,7 @@ dfollow(Char *cp, int old)
 		cleanup_until(cp);
 		return dgoto(cp);
 	    }
+	    xfree(dp);
 	}
 	xfree(buf.s);
     }

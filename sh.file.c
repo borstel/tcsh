@@ -564,7 +564,7 @@ again:				/* search for matches */
     }
 
     if (looking_for_lognames) {
-#ifndef HAVE_GETPWENT
+#ifdef HAVE_GETPWENT
 	(void) endpwent();
 #endif
     } else

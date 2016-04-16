@@ -191,8 +191,13 @@ loop:
 #   else
     /* both a wait3 and rusage */
 #    if !defined(BSDWAIT) || defined(NeXT) || defined(MACH) || defined(__linux__) || defined(__GNU__) || defined(__GLIBC__) || (defined(IRIS4D) && SYSVREL <= 3) || defined(__lucid) || defined(__osf__)
+#ifdef __ANDROID__ /* no wait3, only wait4 */
+    pid = wait4(-1, &w,
+       (setintr && (intty || insource) ? WNOHANG | WUNTRACED : WNOHANG), &ru);
+#else
     pid = wait3(&w,
        (setintr && (intty || insource) ? WNOHANG | WUNTRACED : WNOHANG), &ru);
+#endif /* __ANDROID__ */
 #    else /* BSDWAIT */
     pid = wait3(&w.w_status,
        (setintr && (intty || insource) ? WNOHANG | WUNTRACED : WNOHANG), &ru);

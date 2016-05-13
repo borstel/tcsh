@@ -120,8 +120,7 @@ expand_lex(const struct wordent *sp0, int from, int to)
 		if ((*s & QUOTE)
 		    && (((*s & TRIM) == HIST && HIST != '\0') ||
 			(((*s & TRIM) == '\'') && (prev_c != '\\')) ||
-			(((*s & TRIM) == '\"') && (prev_c != '\\')) ||
-			(((*s & TRIM) == '\\') && (prev_c != '\\')))) {
+			(((*s & TRIM) == '\"') && (prev_c != '\\')))) {
 		    Strbuf_append1(&buf, '\\');
 		}
 #if INVALID_BYTE != 0

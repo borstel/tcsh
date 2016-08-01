@@ -247,6 +247,7 @@ extern	void		  prlex		(struct wordent *);
 extern	eChar		  readc		(int);
 extern	void		  settell	(void);
 extern	void		  unreadc	(Char);
+extern	ssize_t		  wide_read	(int, Char *, size_t, int);
 
 
 /*

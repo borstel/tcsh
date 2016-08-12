@@ -778,7 +778,7 @@ int nt_try_fast_exec(struct command *t) {
 	register struct varent *v;
 	register int hashval,i;
 	register int slash;
-	int rc = 0, gflag;
+	int rc = 1, gflag;
 	Char *vp;
 	Char   *blk[2];
 

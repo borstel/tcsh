@@ -606,9 +606,10 @@ execash(Char **t, struct command *kp)
     cleanup_push(&state, execash_cleanup);
 
     /*
-     * Decrement the shell level
+     * Decrement the shell level, if not in a subshell
      */
-    shlvl(-1);
+    if (mainpid == getpid())
+	shlvl(-1);
 #ifdef WINNT_NATIVE
     __nt_really_exec=1;
 #endif /* WINNT_NATIVE */

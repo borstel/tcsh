@@ -631,8 +631,10 @@ EXTERN time_t seconds0;
 /*
  * Miscellany
  */
+EXTERN pid_t   mainpid;		/* pid of the main shell ($$) */
 EXTERN Char   *doldol;		/* Character pid for $$ */
 EXTERN pid_t   backpid;		/* pid of the last background job */
+
 
 /*
  * Ideally these should be uid_t, gid_t, pid_t. I cannot do that right now

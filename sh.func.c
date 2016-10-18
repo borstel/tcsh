@@ -2448,12 +2448,20 @@ doeval_cleanup(void *xstate)
     didcch = state->didcch;
 #endif /* CLOSE_ON_EXEC */
     didfds = state->didfds;
-    xclose(SHIN);
-    xclose(SHOUT);
-    xclose(SHDIAG);
+    if (state->saveIN != SHIN)
+	xclose(SHIN);
+    if (state->saveOUT != SHOUT)
+	xclose(SHOUT);
+    if (state->saveDIAG != SHDIAG)
+	xclose(SHDIAG);
     close_on_exec(SHIN = dmove(state->saveIN, state->SHIN), 1);
     close_on_exec(SHOUT = dmove(state->saveOUT, state->SHOUT), 1);
     close_on_exec(SHDIAG = dmove(state->saveDIAG, state->SHDIAG), 1);
+    if (didfds) {
+	close_on_exec(dcopy(SHIN, 0), 1);
+	close_on_exec(dcopy(SHOUT, 1), 1);
+	close_on_exec(dcopy(SHDIAG, 2), 1);
+    }
 }
 
 static Char **Ggv;

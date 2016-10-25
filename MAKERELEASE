@@ -81,7 +81,7 @@ gzip -9 "tcsh-${VerA}.tar"
 #
 if [ "${3}" -gt 0 ]
 then
-    prev=$(expr "${3}" - 1)
+    prev=$(expr "${3}" - 1 || true)
     TagB=$(printf "TCSH%d_%02d_%02d" "${1}" "${2}" "${prev}")
     VerB=$(printf "%d.%02d.%02d" "${1}" "${2}" "${prev}")
     pfile=$(printf "patch%d" "${3}")

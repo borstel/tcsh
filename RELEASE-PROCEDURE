@@ -37,7 +37,8 @@ The following steps are now automated by running
 
 The rest are still manual:
 
-15) Make the patch and the source tarball available on ftp
+15) Make the patch and the source tarball available on ftp, and sign it
+    - gpg --armor --detach-sign tcsh-x.yy.zz.tar.gz
 16) Add the new version to bugs.gw.com:
     - Click: Manage > Manage Projects > tcsh
     - Scroll down to "Versions"
